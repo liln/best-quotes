@@ -1,13 +1,12 @@
 class QuotesController < Rulers::Controller
   def index
-    quotes = FileModel.all
-    render :index, quotes: quotes
+    @quotes = FileModel.all
   end
 
   def show
     quote = FileModel.find(params["id"])
     ua = request.user_agent
-    render_response :quote, obj: quote, ua: ua
+    render :quote, obj: quote, ua: ua
   end
 
   def new_quote
@@ -33,7 +32,6 @@ class QuotesController < Rulers::Controller
   def a_quote
     @adjective = "fine"
     @noun = "coffee"
-    render :a_quote
   end
 
   def submitter_bob
